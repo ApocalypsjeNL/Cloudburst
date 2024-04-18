@@ -8,12 +8,16 @@ plugins {
 }
 
 val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
+val openCollaborationMavenUrlSnapshots = "https://repo.opencollab.dev/maven-snapshots/" // Cloudburst
+val openCollaborationMavenUrlReleases = "https://repo.opencollab.dev/maven-releases/" // Cloudburst
 
 repositories {
     mavenCentral()
     maven(paperMavenPublicUrl) {
         content { onlyForConfigurations(configurations.paperclip.name) }
     }
+    maven(openCollaborationMavenUrlSnapshots)
+    maven(openCollaborationMavenUrlReleases)
 }
 
 dependencies {
@@ -48,6 +52,8 @@ subprojects {
     repositories {
         mavenCentral()
         maven(paperMavenPublicUrl)
+        maven(openCollaborationMavenUrlSnapshots)
+        maven(openCollaborationMavenUrlReleases)
     }
 }
 
@@ -80,16 +86,20 @@ tasks.generateDevelopmentBundle {
     libraryRepositories.addAll(
         "https://repo.maven.apache.org/maven2/",
         paperMavenPublicUrl,
+        openCollaborationMavenUrlSnapshots,
+        openCollaborationMavenUrlReleases
     )
 }
 
 allprojects {
     publishing {
         repositories {
-            maven("https://repo.papermc.io/repository/maven-snapshots/") {
-                name = "paperSnapshots"
+            // Cloudburst start
+            maven("https://repo.opencollab.dev/maven-snapshots/") {
+                name = "openCollaborationSnapshots"
                 credentials(PasswordCredentials::class)
             }
+            // Cloudburst end
         }
     }
 }

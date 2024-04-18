@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Niek Vincent <apocalypsjenl@gmail.com>
+Date: Thu, 18 Apr 2024 17:28:14 +0200
+Subject: [PATCH] Cloudburst configuration
+
+
+diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
+index 4ff1b38eb65f97344257204cf018f176f247ed36..91ddde5911dbd2c12de6ac5c8adba1f9483418dd 100644
+--- a/src/main/java/org/bukkit/Server.java
++++ b/src/main/java/org/bukkit/Server.java
+@@ -2235,6 +2235,14 @@ public interface Server extends PluginMessageRecipient, net.kyori.adventure.audi
+         }
+         // Paper end
+ 
++        // Cloudburst start
++        @NotNull
++        public org.bukkit.configuration.file.YamlConfiguration getCloudConfiguration()
++        {
++            throw new UnsupportedOperationException("Not supported yet.");
++        }
++        // Cloudburst end
++
+         /**
+          * Sends the component to the player
+          *
