@@ -4,7 +4,7 @@ plugins {
     java
     `maven-publish`
     id("com.github.johnrengelman.shadow") version "8.1.1" apply false
-    id("io.papermc.paperweight.patcher") version "1.5.12"
+    id("io.papermc.paperweight.patcher") version "1.5.15"
 }
 
 val paperMavenPublicUrl = "https://repo.papermc.io/repository/maven-public/"
@@ -28,7 +28,7 @@ allprojects {
 
     java {
         toolchain {
-            languageVersion.set(JavaLanguageVersion.of(21))
+            languageVersion.set(JavaLanguageVersion.of(17))
         }
     }
 }
@@ -36,7 +36,7 @@ allprojects {
 subprojects {
     tasks.withType<JavaCompile> {
         options.encoding = Charsets.UTF_8.name()
-        options.release.set(21)
+        options.release.set(17)
     }
     tasks.withType<Javadoc> {
         options.encoding = Charsets.UTF_8.name()
